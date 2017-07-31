@@ -18,7 +18,20 @@ class PlayerController extends Controller
 
     public function register(Request $request){
 
-        print_r($request->headers->all());
+        $headers = $request->headers->all();
+        $key = $headers['x-secondlife-owner-key'][0];
+        $player = Player::where('key', $key)->first();
+
+        if($player)
+            return ['response' => 'error', 'message' => 'This player allready exists.'];
+
+        $newPlayer = Player::create([
+            'key' => $key,
+            'name' => $headers['x-secondlife-owner-name'][0],
+            'hud_uuid' => $headers['x-secondlife-object-key'][0]
+        ]);
+
+        return ['response' => 'success', 'message' => 'Player is registered.'];
 
     }
 
