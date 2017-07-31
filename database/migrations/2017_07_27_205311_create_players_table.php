@@ -17,6 +17,8 @@ class CreatePlayersTable extends Migration
             $table->increments('id');
             $table->string('key');
             $table->string('name');
+            $table->string('hud_url');
+            $table->string('hud_uuid');
             $table->timestamps();
         });
     }
