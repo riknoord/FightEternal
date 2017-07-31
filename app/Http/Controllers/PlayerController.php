@@ -16,4 +16,10 @@ class PlayerController extends Controller
 
     }
 
+    public function register(Request $request){
+
+        print_r($request->headers->all());
+
+    }
+
 }
