@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 
-
+Route::get('/player/register', 'PlayerController@register');
 Route::get('/player/{key}', 'PlayerController@find');
